@@ -1,4 +1,4 @@
-[project]
+[workspace]
 channels = ["conda-forge"]
 name = "esm-xpeem-profile-collection"
 platforms = ["linux-64"]
