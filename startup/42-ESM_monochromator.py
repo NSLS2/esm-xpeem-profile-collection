@@ -17,65 +17,68 @@ import math
 import re
 from boltons.iterutils import chunked
 import sys
+from pathlib import Path
 ip=IPython.get_ipython()
 
-### READ IN DEFINITION DICTIONARY FROM CSV FILES IN: /home2/xf21id1/.ipython/profile_collection/startup/motion_definition_files/
+_STARTUP_DIR = Path(ip.profile_dir.location) / "startup"
 
-df = pd.read_csv('startup/motion_definition_files/Grt_Translation.csv', dtype='float') #you wanted float datatype
+### READ IN DEFINITION DICTIONARY FROM CSV FILES IN: startup/motion_definition_files/
+
+df = pd.read_csv(_STARTUP_DIR / 'motion_definition_files/Grt_Translation.csv', dtype='float') #you wanted float datatype
 ESM_Grt_Translation = df.to_dict(orient='records')[0] #the[0] extract the dictionary
 
-df = pd.read_csv('startup/motion_definition_files/Grt_Offset_A.csv',dtype='str') #you wanted float datatype
+df = pd.read_csv(_STARTUP_DIR / 'motion_definition_files/Grt_Offset_A.csv',dtype='str') #you wanted float datatype
 ESM_Grt_Offset_A = df.to_dict(orient='records')[0] #the[0] extract the dictionary
 
-df = pd.read_csv('startup/motion_definition_files/Grt_Offset_B.csv', dtype='str') #float datatype
+df = pd.read_csv(_STARTUP_DIR / 'motion_definition_files/Grt_Offset_B.csv', dtype='str') #float datatype
 ESM_Grt_Offset_B = df.to_dict(orient='records')[0] #the[0] extract the dictionary
 
-df = pd.read_csv('startup/motion_definition_files/M2_Offset_A.csv', dtype='str') #string  datatype
+df = pd.read_csv(_STARTUP_DIR / 'motion_definition_files/M2_Offset_A.csv', dtype='str') #string  datatype
 ESM_M2_Offset_A = df.to_dict(orient='records')[0] #the[0] extract the dictionary
 
-df = pd.read_csv('startup/motion_definition_files/M2_Offset_B.csv', dtype='str') #string datatype
+df = pd.read_csv(_STARTUP_DIR / 'motion_definition_files/M2_Offset_B.csv', dtype='str') #string datatype
 ESM_M2_Offset_B = df.to_dict(orient='records')[0] #the[0] extract the dictionary
 
-df = pd.read_csv('startup/motion_definition_files/c_value_A.csv', dtype='float') #float datatype
+df = pd.read_csv(_STARTUP_DIR / 'motion_definition_files/c_value_A.csv', dtype='float') #float datatype
 ESM_c_value_A = df.to_dict(orient='records')[0] #the[0] extract the dictionary
 
-df = pd.read_csv('startup/motion_definition_files/c_value_B.csv', dtype='float') #float datatype
+df = pd.read_csv(_STARTUP_DIR / 'motion_definition_files/c_value_B.csv', dtype='float') #float datatype
 ESM_c_value_B = df.to_dict(orient='records')[0] #the[0] extract the dictionary
 
-df = pd.read_csv('startup/motion_definition_files/c_value_B.csv', dtype='float') #float datatype
+df = pd.read_csv(_STARTUP_DIR / 'motion_definition_files/c_value_B.csv', dtype='float') #float datatype
 ESM_c_value_B = df.to_dict(orient='records')[0] #the[0] extract the dictionary
 
-df = pd.read_csv('startup/motion_definition_files/Und_Energy_EPU57_theory.csv', dtype='float') #float datatype
+df = pd.read_csv(_STARTUP_DIR / 'motion_definition_files/Und_Energy_EPU57_theory.csv', dtype='float') #float datatype
 ESM_Und_Energy_EPU57_theory = df.to_dict(orient='series') #the[0] extract the dictionary
 
-df = pd.read_csv('startup/motion_definition_files/Und_Energy_EPU57_LH_theory.csv', dtype='float') #float datatype
+df = pd.read_csv(_STARTUP_DIR / 'motion_definition_files/Und_Energy_EPU57_LH_theory.csv', dtype='float') #float datatype
 ESM_Und_Energy_EPU57_LH_theory = df.to_dict(orient='series') #the[0] extract the dictionary
 
-df = pd.read_csv('startup/motion_definition_files/Und_Energy_EPU57_LV_theory.csv', dtype='float') #float datatype
+df = pd.read_csv(_STARTUP_DIR / 'motion_definition_files/Und_Energy_EPU57_LV_theory.csv', dtype='float') #float datatype
 ESM_Und_Energy_EPU57_LV_theory = df.to_dict(orient='series') #the[0] extract the dictionary
 
-df = pd.read_csv('startup/motion_definition_files/Und_Energy_EPU105_theory.csv', dtype='float') #float datatype
+df = pd.read_csv(_STARTUP_DIR / 'motion_definition_files/Und_Energy_EPU105_theory.csv', dtype='float') #float datatype
 ESM_Und_Energy_EPU105_theory = df.to_dict(orient='series') #the[0] extract the dictionary
 
-df = pd.read_csv('startup/motion_definition_files/Und_Energy_EPU57.csv', dtype='float') #float datatype
+df = pd.read_csv(_STARTUP_DIR / 'motion_definition_files/Und_Energy_EPU57.csv', dtype='float') #float datatype
 ESM_Und_Energy_EPU57 = df.to_dict(orient='series')
 
-df = pd.read_csv('startup/motion_definition_files/Und_Energy_EPU105.csv', dtype='float') #float datatype
+df = pd.read_csv(_STARTUP_DIR / 'motion_definition_files/Und_Energy_EPU105.csv', dtype='float') #float datatype
 ESM_Und_Energy_EPU105 = df.to_dict(orient='series') 
 
-df = pd.read_csv('startup/motion_definition_files/Und_Energy_LV_EPU105.csv', dtype='float') #float datatype
+df = pd.read_csv(_STARTUP_DIR / 'motion_definition_files/Und_Energy_LV_EPU105.csv', dtype='float') #float datatype
 ESM_Und_Energy_LV_EPU105 = df.to_dict('series') 
 
-df = pd.read_csv('startup/motion_definition_files/Und_Energy_EPU105_Cgap_theory.csv', dtype='float') #float datatype
+df = pd.read_csv(_STARTUP_DIR / 'motion_definition_files/Und_Energy_EPU105_Cgap_theory.csv', dtype='float') #float datatype
 ESM_Und_Energy_Cgap_EPU105_theory = df.to_dict('series') 
 
-df = pd.read_csv('startup/motion_definition_files/Und_Energy_EPU105_Cphase_theory.csv', dtype='float') #float datatype
+df = pd.read_csv(_STARTUP_DIR / 'motion_definition_files/Und_Energy_EPU105_Cphase_theory.csv', dtype='float') #float datatype
 ESM_Und_Energy_Cphase_EPU105_theory = df.to_dict('series') 
 
-df = pd.read_csv('startup/motion_definition_files/Und_Energy_EPU57_Cgap_theory.csv', dtype='float') #float datatype
+df = pd.read_csv(_STARTUP_DIR / 'motion_definition_files/Und_Energy_EPU57_Cgap_theory.csv', dtype='float') #float datatype
 ESM_Und_Energy_Cgap_EPU57_theory = df.to_dict('series') 
 
-df = pd.read_csv('startup/motion_definition_files/Und_Energy_EPU57_Cphase_theory.csv', dtype='float') #float datatype
+df = pd.read_csv(_STARTUP_DIR / 'motion_definition_files/Und_Energy_EPU57_Cphase_theory.csv', dtype='float') #float datatype
 ESM_Und_Energy_Cphase_EPU57_theory = df.to_dict('series') 
 
 
