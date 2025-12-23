@@ -441,7 +441,8 @@ class ESM_monochromator_device:
         i = k.index(float(grating))
         b2 = -a1[i]/(2*k[i])
         X= photon_energy #energy range in eV
-        L = (1.24/X)*0.001  # wavelenght in mm
+	# L = (1.24/X)*0.001  # wavelenght in mm
+        L = (1.239842/X)*0.001  # wavelenght in mm
         A0 = (k[i]*L)
         A2 = A0*rb*b2
         if c==None:
