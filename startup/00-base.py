@@ -7,6 +7,7 @@ nslsii.configure_base(
     get_ipython().user_ns, 
     'xpeem',
     publish_documents_with_kafka=True,
-    redis_url="info.esm.nsls2.bnl.gov",
-    redis_prefix="xpeem-"
+    redis_url="xf21id1-xpeem-redis1.nsls2.bnl.gov",
+    redis_port=6380,
+    redis_ssl=True,
 )
